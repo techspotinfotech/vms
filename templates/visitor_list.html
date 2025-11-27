@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Visitor List - VMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <div class="d-flex">
+      <nav class="sidebar text-white p-3" style="width:240px;">
+        <div class="text-center mb-3">
+          <img src="{{ url_for('static', filename='images/logo.jfif') }}" alt="logo" style="max-width:90px;">
+          <h5 class="mt-2">Sangli Police VMS</h5>
+        </div>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('dashboard') }}">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('add_visitor') }}">Check-In Visitor</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('visitor_list') }}">Ongoing / All Visitors</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Reports</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Admins</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+      </nav>
+
+      <div class="content p-4" style="width:100%;">
+        <h3>Visitors</h3>
+        <table class="table table-bordered">
+          <thead><tr><th>#</th><th>Name</th><th>Phone</th><th>Purpose</th><th>Check-in</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody>
+            {% for row in rows %}
+            <tr>
+              <td>{{ loop.index }}</td>
+              <td>{{ row.name }}</td>
+              <td>{{ row.phone }}</td>
+              <td>{{ row.purpose }}</td>
+              <td>{{ row.check_in }}</td>
+              <td>{{ row.status }}</td>
+              <td><a class="btn btn-sm btn-primary" href="{{ url_for('view_visitor', visit_id=row.visit_id) }}">View</a></td>
+            </tr>
+            {% else %}
+            <tr><td colspan="7" class="text-center">No visitors found</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

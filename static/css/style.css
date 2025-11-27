@@ -1,0 +1,6 @@
+body{font-family:Inter, Arial, sans-serif;}
+.sidebar{width:220px;min-height:100vh;background:#0b5ed7;}
+.sidebar .nav-link{color:white;}
+.content{background:#f7f9fc;min-height:100vh;}
+.nav-link:hover{opacity:0.9;}
+.card .display-6{font-weight:700;}

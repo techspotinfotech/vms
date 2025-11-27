@@ -1,0 +1,7 @@
+flask
+mysql-connector-python
+pillow
+qrcode
+pandas
+reportlab
+gunicorn==21.2.0

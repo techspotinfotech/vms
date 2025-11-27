@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Visitor Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <div class="d-flex">
+      <nav class="sidebar text-white p-3" style="width:240px;">
+        <div class="text-center mb-3">
+          <img src="{{ url_for('static', filename='images/logo.jfif') }}" alt="logo" style="max-width:90px;">
+          <h5 class="mt-2">Sangli Police VMS</h5>
+        </div>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('dashboard') }}">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('add_visitor') }}">Check-In Visitor</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('visitor_list') }}">Ongoing / All Visitors</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Reports</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Admins</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+      </nav>
+
+      <div class="content p-4" style="width:100%;">
+        <h3>Visitor Details</h3>
+        <div class="card mb-3" style="max-width:700px;">
+          <div class="row g-0">
+            <div class="col-md-4 text-center p-3">
+              {% if data.photo %}
+                <img src="/{{ data.photo }}" class="img-fluid rounded" alt="photo">
+              {% else %}
+                <img src="{{ url_for('static', filename='images/logo.jfif') }}" class="img-fluid rounded" alt="photo">
+              {% endif %}
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ data.name }}</h5>
+                <p class="card-text"><strong>Phone:</strong> {{ data.phone }}</p>
+                <p class="card-text"><strong>Purpose:</strong> {{ data.purpose }}</p>
+                <p class="card-text"><strong>Department:</strong> {{ data.department }}</p>
+                <p class="card-text"><strong>Check-in:</strong> {{ data.check_in }}</p>
+                <p class="card-text"><strong>Status:</strong> {{ data.status }}</p>
+                {% if data.qr_path %}
+                <p class="mt-2"><strong>QR:</strong><br><img src="/{{ data.qr_path }}" alt="qr" style="max-width:150px;"></p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

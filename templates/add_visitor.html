@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Add Visitor - VMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <div class="d-flex">
+      <nav class="sidebar text-white p-3" style="width:240px;">
+        <div class="text-center mb-3">
+          <img src="{{ url_for('static', filename='images/logo.jfif') }}" alt="logo" style="max-width:90px;">
+          <h5 class="mt-2">Sangli Police VMS</h5>
+        </div>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('dashboard') }}">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('add_visitor') }}">Check-In Visitor</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('visitor_list') }}">Ongoing / All Visitors</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Reports</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Admins</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+      </nav>
+
+      <div class="content p-4" style="width:100%;">
+        <h3>Check-In Visitor</h3>
+        <form method="post" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-md-6 mb-2"><input class="form-control" name="name" placeholder="Full Name" required></div>
+            <div class="col-md-6 mb-2"><input class="form-control" name="phone" placeholder="Phone"></div>
+            <div class="col-md-6 mb-2"><input class="form-control" name="email" placeholder="Email"></div>
+            <div class="col-md-6 mb-2">
+              <select class="form-control" name="gender">
+                <option value="">Gender</option><option>Male</option><option>Female</option><option>Other</option>
+              </select>
+            </div>
+            <div class="col-12 mb-2"><textarea class="form-control" name="address" placeholder="Address"></textarea></div>
+            <div class="col-md-6 mb-2"><input class="form-control" name="purpose" placeholder="Purpose"></div>
+            <div class="col-md-6 mb-2"><input class="form-control" name="department" placeholder="Department"></div>
+            <div class="col-md-6 mb-2"><input class="form-control" name="person_to_meet" placeholder="Person to meet"></div>
+            <div class="col-md-6 mb-2"><input type="file" class="form-control" name="photo"></div>
+          </div>
+          <button class="btn btn-success mt-2">Check In</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
